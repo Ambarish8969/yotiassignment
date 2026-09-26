@@ -1,0 +1,42 @@
+<template>
+    <lightning-card>
+        <div class="slds-p-horizontal_medium">
+            <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center slds-m-bottom_small">
+                <div class="logo">YOTI SIGN</div>
+                <div class="slds-grid slds-grid_vertical-align-center">
+                    <span class="slds-m-right_x-small">{rangeIndex}</span>
+                    <lightning-button-icon
+                        icon-name="utility:chevronleft"
+                        alternative-text="Previous"
+                        disabled={isFirstPage}
+                        onclick={handlePrevious}>
+                    </lightning-button-icon>
+                    <lightning-button-icon
+                        icon-name="utility:chevronright"
+                        alternative-text="Next"
+                        class="slds-m-left_xx-small"
+                        disabled={isLastPage}
+                        onclick={handleNext}>
+                    </lightning-button-icon>
+                </div>
+            </div>
+
+            <!-- Table -->
+            <lightning-datatable
+                key-field="Id"
+                data={rows}
+                columns={columns}
+                hide-checkbox-column
+                onrowaction={handleRowAction}>
+            </lightning-datatable>
+
+            <!-- Error -->
+            <template if:true={error}>
+                <p class="slds-text-color_error slds-m-top_small">
+                    Unable to load eSign requests. Please try again.
+                </p>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>

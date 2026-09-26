@@ -1,4 +1,4 @@
-public class ESignRequestController {
+public with sharing class ESignRequestController {
     
     @AuraEnabled(cacheable = true)
     public static List<eSign_Request__c> getRequests(Integer pageSize, Integer pageNumber){
